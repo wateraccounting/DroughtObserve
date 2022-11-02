@@ -80,7 +80,7 @@ function chartData(props,level) {
                 y: {
                     title: {
                         display: true,
-                        text: 'Index'
+                        text: 'SPAEI'
                     }
                 }
             },
@@ -195,7 +195,7 @@ const config = {
             },
             title: {
                 display: true,
-                text: 'Top 5 with extreme drought'
+                text: 'Five extreme drought zones'
             }
         }
     },
@@ -216,15 +216,15 @@ function pieChartRender(props) {
         labels: [
             'Forest',
             'Builtup',
-            'Water','Cropland'
+            'Water','Cropland','Shrubland','Herbaceous','Bareland','Others',
         ],
         datasets: [{
             label: 'My First Dataset',
-            data: [props.Forest, props.Builtup, props.Water, props.Cropland],
+            data: [props.lc_for, props.lc_built, props.lc_water, props.lc_crop, props.lc_shrub, props.lc_herb, props.lc_bare, props.lc_others],
             backgroundColor: [
                 'darkgreen',
-                'yellow',
-                '#2B65EC','#CD7F32'
+                '#fa0000',
+                '#0032c8','#f096ff','#ffbb22','#ffff4c','#939392','#deef65'
             ],
             hoverOffset: 4
         }]

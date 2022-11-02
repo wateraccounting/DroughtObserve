@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Drought Index</title>
+    <title>Drought Observe</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
     <link rel="=stylesheet" href="./css/leaflet.fullscreen.css" />
@@ -28,8 +28,12 @@
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/hayeswise/Leaflet.PointInPolygon/v1.0.0/wise-leaflet-pip.js"></script>
     <style>
-        html, body {
+        html{
             height: 100%;
+            margin: 0;
+        }
+        body{
+            min-height: 100vh;
             margin: 0;
         }
 
@@ -42,13 +46,13 @@
 
         .info-legend {
             padding: 6px 8px;
-            font: 14px/16px Arial, Helvetica, sans-serif;
+            font: 12px/14px Arial, Helvetica, sans-serif;
             background: white;
             background: rgba(255,255,255,0.8);
             box-shadow: 0 0 15px rgb(0 0 0 / 20%);
             border-radius: 5px;
-            width: 100px;
-            height: 190px;
+            width: 150px;
+            height: 150px;
         }
 
 
@@ -92,7 +96,7 @@
             align-items: center;
             position: absolute;
             bottom: 5px;
-            left: 10px;
+            left: 1px;
             right: 10px;
             width: 75%;
             height: 28%;
@@ -101,7 +105,6 @@
             z-index: 500;
             float: left;
         }
-
         div#barArea {
             font: 14px/16px Arial, Helvetica, sans-serif;
             display: inline-block;
@@ -109,7 +112,7 @@
             left: 5px;
             right: 10px;
             width: 24%;
-            height: 98%;
+            height: 100%;
             float: right;
             opacity: 0.8;
             text-align: left;
@@ -153,7 +156,7 @@
             z-index: 500;
         }
 
-        .btn {
+        /*.btn {
             display: flex;
             align-items: center;
             position: absolute;
@@ -176,26 +179,77 @@
 
         .csv {
             left: 50px;
+        }*/
+
+        .btn {
+            
+            background-color: white;
+            border-radius: 5px;
+            border-color: gray;
+            border-style: solid;
+            border-width: 1px 1px 1px 1px;
+            opacity: 1;
+            float:right;
+        }
+        div#footer {
+        position: absolute;
+        width: 100%;
+        bottom: 0; /* stick to bottom */
+        background: #ddd;
+        }
+        /* Three image containers (use 25% for four, and 50% for two, etc) */
+        .column {
+        float: left;
+        width: 50%;
+        padding: 5px;
+        }
+
+        /* Clear floats after image containers */
+        .row::after {
+        content: "";
+        clear: both;
+        display: table;
         }
     </style>
 
 
 </head>
 <body>
-    <div id="map"></div>
+    <div id="map">
+    </div>
     <div id="barArea">
-        <h2><label id="lblName"> Africa and Middle East </label></h2>
-        <h3><label id="lblMonth"></label></h3>
-        <h4 style="display:none" id="h4Pop">Population: <label id="lblPopu">1 Billion</label></h4>
-        <div id="barChartArea" style="height:250px !important;">
+        <h3><label id="lblName" > Africa and Middle East </label>; <label id="lblMonth"></label></h3>
+        <h4 style="display:none; margin-top: -10px" id="h4Pop">Population: <label id="lblPopu">1 Billion</label></h4>
+        <div id="barChartArea" style="height:auto !important; min-height: 25%; margin-top: -20px">
             <canvas id="barChart"></canvas>
         </div>
-        <div id="pieChartArea" style="height:250px !important;">
+        <div id="pieChartArea" style="height: 200px !important; min-height: 10%">
             <canvas id="pieChart"></canvas>
         </div>
+        <div id="logoArea" style="height:auto !important; min-height: 5%; text-align: justify; padding: 5px">
+            <h5><b>Drought Observe</b> shows near real time (since 2010) drought intensity maps at monthly scale. Computed using the <b>Standardised Precipitation Actual Evapotranspiration Index (SPAEI)</b> as explained in 
+        <a href="https://www.sciencedirect.com/science/article/pii/S2452316X16300321" target="_blank">Homdee et.al 2016</a>. The data used are monthly Actual Evapotranspiration and Interception (AETI) and Precipitation acquired from <a href="https://wapor.apps.fao.org" target="_blank">FAO WaPOR</a> database. </h5>
+            <br>        
+        <div class="row">
+            <div class="column">
+                <a href="https://www.un-ihe.org" target="_blank"> <img src="img/logo1.png" alt="IHE Delft" style="width:100%"> </a>
+            </div>
+            <div class="column">
+                <a href="https://waterpip.un-ihe.org/" target="_blank"> <img src="img/logo3.png" alt="WaterPIP" style="width:100%"> </a>
+            </div>
+            </div>
+            <img src="img/logo2.png" alt="alternatetext" style="width:100%">
+        </div>
+        <br>
+        <i><a href="https://waterpip.un-ihe.org/" target="_blank">Read more about WaterPIP project</a></i>
     </div>
+    
     <div id="chartArea" style="display:none">
         <canvas id="myChart"></canvas>
+        <div id="chrBtns" style="display:none">
+            <button id="resetZoom" class="btn zoom" onclick="resetZoom()" title="Reset Zoom"><i class="fa-solid fa-arrows-rotate"></i></button>
+            <button id="exportCSV" class="btn csv" onclick="jsonToCSV()" title="Export to CSV"><i class="fa-solid fa-file-csv"></i></button>
+        </div>
     </div>
     <div id="monthArea">
         <input type="month" id="monthsel" min="2010-01" name="monthsel" onchange="monChanged()">
@@ -204,10 +258,7 @@
         <i class="fa-solid fa-left-long fa-xl"></i>
     </button>
     <input id="slide" title="spi Opacity" type="range" min="0" max="1" step="0.1" value="0.8" onchange="updateOpacity(this.value)"/>
-    <div id="chrBtns" style="display:none">
-        <button id="resetZoom" class="btn zoom" onclick="resetZoom()" title="Reset Zoom"><i class="fa-solid fa-arrows-rotate"></i></button>
-        <button id="exportCSV" class="btn csv" onclick="jsonToCSV()" title="Export to CSV"><i class="fa-solid fa-file-csv fa-lg"></i></button>
-    </div>
+
     <script src="./data/levelzero.js"></script>
     <script src="./data/levelone.js"></script>
     <script src="./js/chart.js"></script>

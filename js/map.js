@@ -106,7 +106,7 @@ function style(feature) {
 }
 
 function getColor(e) {
-    return (e >= 1 ? '#16558F' : e > 0.5 && e < 1 ? '#0583D2' : e > 0 && e < 0.5 ? '#61B0B7' : e > -1 && e < -0.5 ? '#FF5252' : e > -0.5 && e < 0 ? '#FF7B7B' : e < -1 ? '#FF0000' : e = null ? '#FFFFFF' : '"#FFFFFF"')
+    return (e >= 1 ? '#61B0B7' : e > 0.5 && e < 1 ? '#61B0B7' : e > 0 && e < 0.5 ? '#61B0B7' : e > -1.5 && e < -1 ? '#FF5252' : e > -1 && e < 0 ? '#FF7B7B' : e < -1.5 ? '#FF0000' : e == null ? '#F8F9F9' : '"#F8F9F9"')
 }
 
 // spi tooltip and actions
@@ -114,7 +114,7 @@ function onEachFeature(feature, layer) {
 
 
 
-    layer.bindTooltip("<b style='color: #000000;font-size: 18px;'>" + feature.properties.NAME + "</b><br/><b style='font-size: 14px;'>" + Math.round(feature.properties[latestmonth] * 100) / 100 + " (" + latestmonthsp[0] + " " + latestmonthsp[1] + ")</b><br/><b style='font-size: 14px;'>Population: " + numFormatter(feature.properties.Population) + "</b>",
+    layer.bindTooltip("<b style='color: #000000;font-size: 18px;'>" + feature.properties.NAME + "</b><br/><b style='font-size: 14px;'>" + Math.round(feature.properties[latestmonth] * 100) / 100 + " (" + latestmonthsp[0] + " " + latestmonthsp[1] + ")</b><br/><b style='font-size: 14px;'>Population: " + numFormatter(feature.properties.pop_sum) + "</b>",
         {
             //direction: 'right',
             permanent: false,
@@ -137,7 +137,7 @@ function onEachFeatureDis(feature, layer) {
 
 
 
-    layer.bindTooltip("<b style='color: #000000;font-size: 18px;'>" + feature.properties.name + "</b><br/><b style='font-size: 14px;'>" + Math.round(feature.properties[latestmonth] * 100) / 100 + " (" + latestmonthsp[0] + " " + latestmonthsp[1] + ")</b><br/><b style='font-size: 14px;'>Population: " + numFormatter(feature.properties.Population) + "</b>",
+    layer.bindTooltip("<b style='color: #000000;font-size: 18px;'>" + feature.properties.name + "</b><br/><b style='font-size: 14px;'>" + Math.round(feature.properties[latestmonth] * 100) / 100 + " (" + latestmonthsp[0] + " " + latestmonthsp[1] + ")</b><br/><b style='font-size: 14px;'>Population: " + numFormatter(feature.properties.pop_sum) + "</b>",
         {
             //direction: 'right',
             permanent: false,
@@ -231,7 +231,7 @@ function updateStats(props, level) {
     else if (level == "1")
         cName = props.name + ' (' + props.admin + ')';
     $("#lblName").text(cName);
-    $("#lblPopu").text(numFormatter(props.Population));
+    $("#lblPopu").text(numFormatter(props.pop_sum));
 }
 
 var level0Props;
@@ -300,16 +300,18 @@ info.onAdd = function (map) {
 
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
-    var rngs = ["> 1", "0.5 to 1", "0 to 0.5", "-0.5 to 0", "-1 to -0.5", "< -1"];
-    var clrs = ["#16558F", "#0583D2", "#61B0B7", "#FF7B7B", "#FF5252", "#FF0000"];
+    //var rngs = [" > 1", " 0.5 to 1", " 0 to 0.5", " -0.5 to 0", " -1 to -0.5", " < -1"];
+    //var clrs = ["#16558F", "#0583D2", "#61B0B7", "#FF7B7B", "#FF5252", "#FF0000"];
+    var rngs = ["Extreme Drought", "Severe Drought", "Moderate Drought", "None", "N.A"];
+    var clrs = ["#FF0000", "#FF5252", "#FF7B7B", "#61B0B7", "#B2B2B2"];
     //var labels = '<div class="div-legend-css p-0" style="position: absolute; width: 150px;">';
     //labels = labels + '<b> Deviation in %, Water Year: 2020 - 21 </b>';
-    var labels = '<b> Drought Index <br/><br/></b>';
+    var labels = '<b> Drought Intensity <br/><br/></b>';
 
     var topcss = "";
     for (var i = 0; i < rngs.length; i++) {
         topcss = i > 0 ? "margin-top: 1px;" : "";
-        labels = labels + ' <div style="width:100%;display:inline-flex;' + topcss + '"><div style="height:20px; width:20px; background:' + clrs[i] + '"></div><span class="ml-2">' + (rngs[i]) + '</span></div> ';
+        labels = labels + ' <div style="width:100%;display:inline-flex;' + topcss + '"><div style="height:20px; width:20px; background:' + clrs[i] + '"></div><span class="ml-2">' + '&nbsp;' + (rngs[i]) + '</span></div> ';
     }
     //$('.div-legend-css').html(labels);
     //labels = labels + '</div >';
