@@ -37,8 +37,8 @@ $.each(allprops, function (key, value) {
 var latestmonth = monthsfi[monthsfi.length - 1].key;
 var latestmonthsp = datFix(latestmonth).split('_');
 //set month selection value and max
-document.getElementById("monthsel").value = "20" + latestmonthsp[1] + "-0" + getMonthFromString(latestmonthsp[0]) + "";
-document.getElementById("monthsel").max = "20" + latestmonthsp[1] + "-0" + getMonthFromString(latestmonthsp[0]) + "";
+document.getElementById("monthsel").value = "20" + latestmonthsp[1] + "-0" + (getMonthFromString(latestmonthsp[0]))  + "";
+document.getElementById("monthsel").max = "20" + latestmonthsp[1] + "-0" + (getMonthFromString(latestmonthsp[0])) + "";
 
 $("#lblMonth").text(latestmonthsp[0] + " " + latestmonthsp[1]); 
 
@@ -106,7 +106,7 @@ function style(feature) {
 }
 
 function getColor(e) {
-    return (e >= 1 ? '#61B0B7' : e > 0.5 && e < 1 ? '#61B0B7' : e > 0 && e < 0.5 ? '#61B0B7' : e > -1.5 && e < -1 ? '#FF5252' : e > -1 && e < 0 ? '#FF7B7B' : e < -1.5 ? '#FF0000' : e == null ? '#F8F9F9' : '"#F8F9F9"')
+    return (e >= 1 ? '#C8C8C8' : e > 0.5 && e < 1 ? '#C8C8C8' : e > 0 && e < 0.5 ? '#C8C8C8' : e > -1.5 && e < -1 ? '#FF5252' : e > -1 && e < 0 ? '#FF7B7B' : e < -1.5 ? '#FF0000' : e == null ? '#F5F5F5' : '"#F5F5F5"')
 }
 
 // spi tooltip and actions
@@ -302,8 +302,8 @@ info.onAdd = function (map) {
 info.update = function (props) {
     //var rngs = [" > 1", " 0.5 to 1", " 0 to 0.5", " -0.5 to 0", " -1 to -0.5", " < -1"];
     //var clrs = ["#16558F", "#0583D2", "#61B0B7", "#FF7B7B", "#FF5252", "#FF0000"];
-    var rngs = ["Extreme Drought", "Severe Drought", "Moderate Drought", "None", "N.A"];
-    var clrs = ["#FF0000", "#FF5252", "#FF7B7B", "#61B0B7", "#B2B2B2"];
+    var rngs = ["Extreme Drought", "Severe Drought", "Moderate Drought", "No Drought", "N.A"];
+    var clrs = ["#FF0000", "#FF5252", "#FF7B7B", "#C8C8C8", "#F5F5F5"];
     //var labels = '<div class="div-legend-css p-0" style="position: absolute; width: 150px;">';
     //labels = labels + '<b> Deviation in %, Water Year: 2020 - 21 </b>';
     var labels = '<b> Drought Intensity <br/><br/></b>';
