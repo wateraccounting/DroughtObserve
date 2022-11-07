@@ -80,7 +80,9 @@ function chartData(props,level) {
                 y: {
                     title: {
                         display: true,
-                        text: 'SPAEI'
+                        text: 'SPAEI',
+                        min: -3,
+                        max: 3
                     }
                 }
             },
