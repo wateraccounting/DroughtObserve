@@ -19,14 +19,20 @@ var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?
 }).addTo(map);
 
 // add world cover wms
-var wmsLayer = L.tileLayer.wms('https://services.terrascope.be/wms/v2', {
-    layers: 'WORLDCOVER_2020_MAP'
+var bdry = L.tileLayer.wms('https://data.apps.fao.org/map/gsrv/gsrv1/boundaries/wms', {
+    layers: 'bndl',
+	styles: 'boundaries:unmap_boundary_lines',
+	format: 'image/png',
+	version: '1.3.0',
+	transparent: 'true'
 });
 
 // add world cover wms
-//var bdry = L.tileLayer.wms('https://data.apps.fao.org/map/gsrv/gsrv1/boundaries/wms', {
-//    layers: 'bndl'
-//});
+var wmsLayer = L.tileLayer.wms('https://services.terrascope.be/wms/v2', {
+    layers: 'WORLDCOVER_2021_MAP'
+});
+
+
 
 //calc latest month in data
 var arr0 = Object.values(level0);
@@ -100,10 +106,9 @@ function getBarChartData(level) {
 
 // map spi style
 function style(feature) {
-    return {
-        
-        weight: 2,
-        opacity: 1,
+    return {        
+        weight: 1,
+        opacity: 0.5,
         color: '#000000',
         //dashArray: '3',
         fillOpacity: opacVal,
@@ -403,8 +408,8 @@ var baseMaps = {
 
 var overlayMaps = {
     " ": {
-        "World Cover": wmsLayer,
-		//"Country boundary": bdry,
+		"World Cover": wmsLayer,
+		"Country boundary": bdry,
         //"spi": countries,
         //"spi Level1": districts
     }
