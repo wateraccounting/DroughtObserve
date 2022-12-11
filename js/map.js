@@ -23,6 +23,10 @@ var wmsLayer = L.tileLayer.wms('https://services.terrascope.be/wms/v2', {
     layers: 'WORLDCOVER_2020_MAP'
 });
 
+// add world cover wms
+//var bdry = L.tileLayer.wms('https://data.apps.fao.org/map/gsrv/gsrv1/boundaries/wms', {
+//    layers: 'bndl'
+//});
 
 //calc latest month in data
 var arr0 = Object.values(level0);
@@ -400,6 +404,7 @@ var baseMaps = {
 var overlayMaps = {
     " ": {
         "World Cover": wmsLayer,
+		//"Country boundary": bdry,
         //"spi": countries,
         //"spi Level1": districts
     }
