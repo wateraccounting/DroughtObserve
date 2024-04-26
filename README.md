@@ -1,6 +1,9 @@
 # DroughtObserve
 **Sub-national scale drought monitoring and forecasting for Africa and Near East**
 
+Cite as:
+Pareeth, S., Mul, M.L., Karimi, P., 2024. DroughtObserve - sub-national scale drought monitoring and forecasting for Africa and Near East using WaPORv2 data.
+
 DroughtObserve is a web-based application calledwas developed by the WaterPIP team using open access data and provides historical (past decade) and forecasted (6 months) monthly drought intensity maps at national and sub-national level along with statistics on distribution of major biomes.
 
 The methodology used to develop the data used in DroughtObserve has two major steps – i) preparation of Standardized Precipitation Actual Evapotranspiration Index (SPAEI) from long term monthly water surplus/deficit data ii) applying an auto-regressive model to predict for future months. DroughtObserve uses data from the FAO WAPOR database to compute drought index (version 2). 
@@ -20,5 +23,5 @@ The interactive dashboard is publicly available at [https://wateraccounting.gith
 ![image](https://github.com/wateraccounting/droughtobserve/blob/master/img/Droughtobserve.png)
 Figure 2. Screenshots of the dashboard at national and sub-national level.
 
-The WaterPIP project was supported by the DUPC2 programme under the programmatic cooperation between the Directorate-General for International Cooperation (DGIS) of the Ministry of Foreign Affairs of the Netherlands and IHE Delft.
+The [WaterPIP project](waterpip.un-ihe.org) was supported by the DUPC2 programme under the programmatic cooperation between the Directorate-General for International Cooperation (DGIS) of the Ministry of Foreign Affairs of the Netherlands and IHE Delft.
 ![image](https://github.com/wateraccounting/droughtobserve/blob/master/img/logo2.png)
