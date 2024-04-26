@@ -9,6 +9,7 @@ DroughtObserve is a web-based application calledwas developed by the WaterPIP te
 The methodology used to develop the data used in DroughtObserve has two major steps – i) preparation of Standardized Precipitation Actual Evapotranspiration Index (SPAEI) from long term monthly water surplus/deficit data ii) applying an auto-regressive model to predict for future months. DroughtObserve uses data from the FAO WAPOR database to compute drought index (version 2). 
 
 ![image](https://github.com/wateraccounting/droughtobserve/blob/master/img/Droughtobserve_method.png)
+
 Figure 1. Steps in creating DroughtObserve
 
 The SPAEI is a modified version of the well-known Standardized Precipitation Evapotranspiration Index (SPEI). Instead of precipitation, it uses monthly difference between precipitation and AETI. Using the following formula, the drought index (Di) of a specific month is calculated to represents time series of climatic water balance:
@@ -21,6 +22,7 @@ The interactive dashboard is publicly available at [https://wateraccounting.gith
 
 ![image](https://github.com/wateraccounting/droughtobserve/blob/master/img/droughtobservedash.JPG)
 ![image](https://github.com/wateraccounting/droughtobserve/blob/master/img/Droughtobserve.png)
+
 Figure 2. Screenshots of the dashboard at national and sub-national level.
 
 The [WaterPIP project](waterpip.un-ihe.org) was supported by the DUPC2 programme under the programmatic cooperation between the Directorate-General for International Cooperation (DGIS) of the Ministry of Foreign Affairs of the Netherlands and IHE Delft.
