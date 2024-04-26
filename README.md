@@ -1,6 +1,7 @@
-# DroughtObserve (c)
+# DroughtObserve
 **Sub-national scale drought monitoring and forecasting for Africa and Near East**
-`Drought Observe` is a web-based application calledwas developed by the WaterPIP team using open access data and provides historical (past decade) and forecasted (6 months) monthly drought intensity maps at national and sub-national level along with statistics on distribution of major biomes.
+
+DroughtObserve is a web-based application calledwas developed by the WaterPIP team using open access data and provides historical (past decade) and forecasted (6 months) monthly drought intensity maps at national and sub-national level along with statistics on distribution of major biomes.
 
 The methodology used to develop the data used in DroughtObserve has two major steps – i) preparation of Standardized Precipitation Actual Evapotranspiration Index (SPAEI) from long term monthly water surplus/deficit data ii) applying an auto-regressive model to predict for future months. DroughtObserve uses data from the FAO WAPOR database to compute drought index (version 2). 
 
